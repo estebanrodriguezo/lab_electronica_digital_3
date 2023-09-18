@@ -60,8 +60,8 @@ int main()
   }
 
 
-  char usuario_ingresado[] = {'_', '_', '_', '\0'} ;
-  char contrasena_ingresada[3];
+  char usuario_ingresado[] = {'_', '_', '_', '_', '\0'} ;
+  char contrasena_ingresada[] = {'_', '_', '_', '_', '_', '_', '\0'} ;
   printf("array: %s\n", usuario_ingresado);
   int usuario_index = 0;
   int contrasena_index = 0;
@@ -73,78 +73,41 @@ int main()
 
   printf("Ingrese su usuario: \n");
   int i = 0;
+  int j = 0;
+
+  
   while (1)
   {
     sleep_ms(100);
     char key = getKey();
+
     if (key != 0)
     {
-      printf("array: %s\n", usuario_ingresado);
-      printf("contrasena indexada: %d\n", contrasena_index);
-      printf("Tecla presionada: %c\n", key);
-      sleep_ms(500); // Evita la repetición rápida de teclas
-      i += 1;
-      printf("contador %d\n", i);
-      usuario_ingresado[(i-1)%3] = key;
+      if (i < 4)
+      {
 
-
-      printf("array: %s\n", usuario_ingresado);
+        sleep_ms(500); // Evita la repetición rápida de teclas
+        i += 1;
+        usuario_ingresado[(i - 1) % 4] = key;
+        printf("array: %s\n", usuario_ingresado);
+      }
+      else if (4 <= i < 10)
+      {
+        printf("Ingrese su contraseña: \n");
+        printf("Tecla presionada: %c\n", key);
+        sleep_ms(500); // Evita la repetición rápida de teclas
+        i += 1;
+        contrasena_ingresada[(i+1) % 6] = key;
+        printf("contraseña ingresada: %s\n", contrasena_ingresada);
+      }
+      if (i >= 10)
+      {
+        break; // Salir del bucle cuando i sea igual a 5
+      }
     }
-
-
-
-
-    // Write your code here
-    // encenderledamarillo();
-
-    /*if (key == '*') {
-          usuario_ingresado[usuario_index] = '\0';
-          printf("usuario: %c\n", usuario_ingresado,'\n');
-          printf("Ingrese la clave de usuario: %c\n");
-
-      while (1){
-      char key = getKey();
-      //apagarledamarillo();
-
-      if (key == '*') {
-          contrasena_ingresada[contrasena_index] = '\0';
-          printf("contraseña: %c\n", contrasena_ingresada);
-      //apagarledamarillo();
-      break; // Salir del bucle cuando se presiona asterisco ('*')
-      }
-
-      else if (contrasena_index < 6) { // Evitar desbordamiento
-          printf("tecla: %c\n", key);
-          contrasena_ingresada[contrasena_index++] = key; // Agregar la tecla a la cadena y aumentar el índice
-      }
-     }
-  }
-
-    else if (usuario_index < 4) { // Evitar desbordamiento
-      printf("tecla %c\n", key);
-      usuario_ingresado[usuario_index++] = key; // Agregar la tecla a la cadena y aumentar el índice
-    }  */
   }
 
   int resultado = verificarAcceso(usuario_ingresado, contrasena_ingresada);
   return 0;
 }
 
-/*
-    while (1) {
-        //parpadearledamarillo();
-        char key = getKey();
-
-      if (key == '*') {
-        contrasena_ingresada[contrasena_index] = '\0';
-        printf("contraseña: ", contrasena_ingresada);
-        //apagarledamarillo();
-        break; // Salir del bucle cuando se presiona asterisco ('*')
-    }
-     else if (contrasena_index < 6) { // Evitar desbordamiento
-        printf("tecla: ", key);
-        contrasena_ingresada[contrasena_index++] = key; // Agregar la tecla a la cadena y aumentar el índice
-      }
-
-    }
-    */
