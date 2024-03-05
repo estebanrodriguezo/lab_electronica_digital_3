@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include "pico/stdlib.h"
+#include "hardware/gpio.h"
+
+// Definición de pines GPIO para los segmentos (a, b, c, d, e, f, g)
+const uint segment_pins[] = {7, 6, 18, 19, 20, 2, 1};
+const int num_segments = 7;
+
+// Definición de pines GPIO para los dígitos (unidad, decena, centena, ...)
+const uint digit_pins[] = {10, 11, 12, 13, 14, 15};
+const int num_digits = 6;
+
+const int segments[10][7] = {
+    {0, 0, 0, 0, 0, 0, 1},  // 0
+    {1, 0, 0, 1, 1, 1, 1},  // 1
+    {0, 0, 1, 0, 0, 1, 0},  // 2
+    {0, 0, 0, 0, 1, 1, 0},  // 3
+    {1, 0, 0, 1, 1, 0, 0},  // 4
+    {0, 1, 0, 0, 1, 0, 0},  // 5
+    {0, 1, 0, 0, 0, 0, 0},  // 6
+    {0, 0, 0, 1, 1, 1, 1},  // 7
+    {0, 0, 0, 0, 0, 0, 0},  // 8
+    {0, 0, 0, 0, 1, 0, 0}   // 9
+};
+
+void initializePins() {
+    for (int i = 0; i < num_segments; i++) {
+        gpio_init(segment_pins[i]);
+        gpio_set_dir(segment_pins[i], GPIO_OUT);
+        gpio_put(segment_pins[i], 1);
+    }
+
+    for (int i = 0; i < num_digits; i++) {
+        gpio_init(digit_pins[i]);
+        gpio_set_dir(digit_pins[i], GPIO_OUT);
+        gpio_put(digit_pins[i], 1);
+    }
+}
+
+void displayDigit(int digit) {
+    for (int i = 0; i < num_segments; i++) {
+        gpio_put(segment_pins[i], segments[digit][i]);
+    }
+}
+
+void displayNumber(int number) {
+    initializePins();
+    int digit = 0;
+    while (number > 0 && digit < num_digits) {
+        displayDigit(number % 10);
+        gpio_put(digit_pins[digit], 0);
+        sleep_ms(1);  // Pausa de 1 milisegundo
+        gpio_put(digit_pins[digit], 1);
+        number /= 10;
+        digit++;
+    }
+}
+
+int main() {
+    stdio_init_all();
+
+    // Configura el pin de entrada
+    const uint input_pin = 22;
+    gpio_init(input_pin);
+    gpio_set_dir(input_pin, GPIO_IN);
+    gpio_pull_down(input_pin);
+
+    int count = 0;
+    int prev_state = 0;
+
+    initializePins();
+
+    while (true) {
+        int state = gpio_get(input_pin);
+        if (state == 1 && prev_state == 0) {
+            count++;
+        }
+        prev_state = state;
+        displayNumber(count);
+        sleep_ms(1000);  // Actualizar cada segundo
+    }
+
+    return 0;
+}

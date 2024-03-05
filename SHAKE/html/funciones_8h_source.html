@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SHAKE256COMENTS: Archivo de código fuente funciones.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">SHAKE256COMENTS<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">funciones.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="funciones_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">//variables de keccakf</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="funciones_8h.html#aafc737ea9ef91f59cf9acd287fb8d085">   15</a></span><span class="preprocessor">#define c 512</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="funciones_8h.html#a62969232668331297e2dca1ae2ddd10d">   16</a></span><span class="preprocessor">#define r 1088</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="funciones_8h.html#ab2d05693952610f937e5acb3c4a8fa1b">   17</a></span><span class="preprocessor">#define b 1600</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">//redefinir el operador módulo</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">static</span> <span class="keywordtype">int</span> modulo(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y){</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">if</span>(x&lt;0)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {       <span class="comment">//sólo cambia para valores negativos</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        x = x*-1;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">return</span> (y-(x%y))%y; <span class="comment">//Esto asegura que el resultado final esté dentro del rango [0, y-1] incluso cuando x es negativo.</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">else</span>        </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">return</span> (x%y);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Función que realiza un intercambio de bits en un byte de 8 bits</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">// Se utiliza para realizar un byte swap en un byte de 8 bits, cambiando el orden de sus bits.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">static</span> uint8_t bswap_8( uint8_t <span class="keywordtype">byte</span> ){</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordflow">return</span> (<span class="keywordtype">byte</span> &amp; 0x80 ? 0x01 : 0) |</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>       (byte &amp; 0x40 ? 0x02 : 0) |</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>       (byte &amp; 0x20 ? 0x04 : 0) |</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>       (byte &amp; 0x10 ? 0x08 : 0) |</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>       (byte &amp; 0x08 ? 0x10 : 0) |</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>       (byte &amp; 0x04 ? 0x20 : 0) |</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>       (byte &amp; 0x02 ? 0x40 : 0) |</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>       (byte &amp; 0x01 ? 0x80 : 0);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">//invierte el orden de los bytes en cada elemento del vector. (un vector de tipo uint8_t.)</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">static</span> uint8_t b2lendian(uint8_t * vector,<span class="keywordtype">int</span> sizev)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;sizev;i++)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        vector[i]=bswap_8(vector[i]); <span class="comment">//Esto invierte el orden de los bits en el elemento vector[i]. El resultado se almacena nuevamente en vector[i], sobrescribiendo el valor original.</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">//padding  se utiliza para realizar el relleno de datos en una cadena de bytes</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">static</span> <span class="keywordtype">void</span> padding(uint8_t * in_string, <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> bytes, <span class="keywordtype">int</span> bloques)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>{</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        in_string[bytes]=(0b11111000);  <span class="comment">// Agrega 4 unos y 1 uno adicional solicitado por el estándar</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=bytes+1; i&lt; ((bloques+1)*136)-1; i++)     </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        in_string[i] = (0b00000000);    <span class="comment">// Completa con ceros para llenar 1079 bits</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        }                       </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        in_string[(((bloques+1)*136)-1)]=0b00000001;    } <span class="comment">// y el último 1 para completar la cadena</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">La función padding se utiliza para realizar el relleno de datos en una cadena de bytes, generalmente como parte de un proceso de preparación de datos para algún algoritmo criptográfico o de procesamiento. En el contexto del código proporcionado, parece que se está preparando una cadena de bytes para el algoritmo Keccak (también conocido como SHA-3), que requiere un relleno específico según el estándar.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"></span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">uint8_t *in_string es un puntero a una cadena de bytes que se va a rellenar.</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"></span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">long long int bytes es la cantidad de bytes en la cadena de bytes original antes del relleno.</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment"></span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">int bloques representa el número de bloques que se utilizarán después del relleno.</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment"></span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">El bucle for a continuación comienza desde bytes + 1 y continúa hasta ((bloques + 1) * 136) - 1. Esto se hace para llenar los bytes adicionales necesarios para alcanzar la longitud deseada después del relleno.</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment"></span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">Dentro del bucle, in_string[i] = (0b00000000); establece todos los bytes adicionales en cero, lo que completa el relleno para alcanzar los 1079 bits requeridos.</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment"></span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">Finalmente, in_string[(((bloques + 1) * 136) - 1)] = 0b00000001; agrega un &quot;1 uno&quot; al final de la cadena para completar el proceso de relleno según el estándar Keccak.</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">//Estas constantes se utilizan para realizar operaciones específicas en cada ronda del algoritmo Keccak durante la transformación.</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">static</span> <span class="keyword">const</span> uint64_t RC[24] ={</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>0x8000000000000000,0x4101000000000000,0x5101000000000001,</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>0x0001000100000001,0xD101000000000000,0x8000000100000000,</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>0x8101000100000001,0x9001000000000001,0x5100000000000000,</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>0x1100000000000000,0x9001000100000000,0x5000000100000000,</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>0xD101000100000000, 0xD100000000000001, 0x9101000000000001,</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>0xC001000000000001, 0x4001000000000001, 0x0100000000000001,</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>0x5001000000000000, 0x5000000100000001, 0x8101000100000001,</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>0x0101000000000001, 0x8000000100000000, 0x1001000100000001};</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">//Cada elemento en el array RC es una constante hexadecimal de 64 bits que se utiliza en las rondas</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="keyword">static</span> <span class="keywordtype">void</span> theta(uint64_t *state){</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="comment">// Definicion de C y D (arrays)</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    uint64_t C[5]={0};</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    uint64_t D[5]={0};</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="comment">// Calculamos el valor de C</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;5;i++) <span class="comment">//El propósito de esta operación es introducir no linealidad en los cálculos y aumentar la seguridad del algoritmo.  </span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        C[i]=state[i]^state[i+5]^state[i+10]^state[i+15]^state[i+20];   </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    }</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="comment">// Calculamos el valor de D</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 5; i++) {</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keywordtype">int</span> prev = modulo((i - 1), 5);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keywordtype">int</span> next = modulo((i + 1), 5);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        D[i] = C[prev] ^ ((C[next] &lt;&lt; 63) | (C[next] &gt;&gt; 1));<span class="comment">// una operación de desplazamiento (shift) a la izquierda de 63 bits en C[(i+1) % 5] (el elemento siguiente en C) y una operación de rotación (shift circular) a la derecha de 1 bit en C[(i+1) % 5]. </span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="comment">//intercambios de theta</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    }</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;5;i++)<span class="comment">//Esto se hace para cada palabra en state y es lo que se conoce como &quot;Theta swaps&quot;.</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    {</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0;j&lt;5;j++){</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            state[i+5*j]=state[i+5*j]^D[i]; <span class="comment">//xor de theta </span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>}</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keyword">static</span> <span class="keywordtype">void</span> rho(uint64_t *state){</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordtype">int</span> jbuffer;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordtype">int</span> i,j;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    i=1;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    j=0;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> t=0; t&lt;24;t++) <span class="comment">//Se repite 24 veces  debido a que esto está relacionado con las rondas de Keccak.</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    {</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        uint64_t temp = state[i + 5 * j]; <span class="comment">// Almacenamos temporalmente el valor de state[i + 5 * j] en &quot;temp&quot;.</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        state[i + 5 * j] = ((((temp) &lt;&lt; (64 - (t + 1) * (t + 2) / 2))) | ((temp) &gt;&gt; ((t + 1) * (t + 2) / 2)));<span class="comment">// Se realiza una operación de desplazamiento a la izquierda en un elemento específico del estado state[i+5*j].</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="comment">// Esta fórmula desplaza los bits hacia la izquierda y hacia la derecha en state[i+5*j] y luego realiza una operación OR bit a bit entre los resultados de los desplazamientos.</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        jbuffer=j;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        j=modulo((2*i+3*j),5);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        i=jbuffer;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="comment">// Esto es parte de la lógica de la transformación Rho para determinar cuál es el próximo elemento en el estado que se modificará en la siguiente iteración del bucle.</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    }</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>}</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment">//Se encarga de reorganizar los valores en el estado interno del algoritmo siguiendo un patrón específico. </span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="keyword">static</span> <span class="keywordtype">void</span> pi(uint64_t *state){</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordtype">int</span> i,j;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    uint64_t s_copy[25] = {0};  <span class="comment">// Se necesita copia del estado para poder operar</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordflow">for</span>(i=0;i&lt;25;i++){</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        s_copy[i]=state[i]; <span class="comment">//Copiamos el estado original a la copia temporal</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    }</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordflow">for</span>(i=0;i&lt;5;i++){</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keywordflow">for</span>(j=0;j&lt;5;j++){</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            <span class="comment">// Reorganizamos el estado original basado en la copia temporal</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            state[i+5*j]=s_copy[modulo((i+3*j),5)+5*i<span class="comment">/*calcula la nueva posición a partir de la fórmula de reorganización específica.*/</span>];</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        }</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>}</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment">// Esta transformación consta de tres pasos: XOR (X), Chi (C), e Iota (I)</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="keyword">static</span> <span class="keywordtype">void</span> xci_iota(uint64_t *state,<span class="keywordtype">int</span> ir){</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    uint64_t s_copy[25] = {0}; <span class="comment">// Creamos una copia temporal del estado</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="keywordtype">int</span> i,j;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordflow">for</span>(i=0;i&lt;25;i++){</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        s_copy[i]=state[i]; <span class="comment">// Copiamos el estado original a la copia temporal</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    }</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">// Paso XOR (X) y Chi</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">for</span> (i = 0; i &lt; 5; i++) { <span class="comment">// Bucle externo para recorrer las filas del estado.</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordflow">for</span> (j = 0; j &lt; 5; j++) { <span class="comment">// Bucle interno para recorrer las columnas del estado.</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            uint64_t A = s_copy[i + 5 * j]; <span class="comment">// Obtenemos el valor de A del estado copiado.</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>            uint64_t B = s_copy[(i + 1) % 5 + 5 * j]; <span class="comment">// Obtenemos el valor de B del estado copiado.</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            <span class="comment">//se realiza una operación XOR entre el elemento A, el elemento B y una máscara de bits 0xFFFFFFFFFFFFFFFFULL. Esto cambia algunos bits en el elemento B según el valor de C.</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            uint64_t C = s_copy[(i + 2) % 5 + 5 * j]; <span class="comment">// Obtenemos el valor de C del estado copiado.</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            state[i + 5 * j] = A ^ ((B ^ 0xFFFFFFFFFFFFFFFFULL) &amp; C); <span class="comment">// Paso de Chi los bits de A se modifican según los valores de B y C.</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            <span class="comment">// Realizamos la operación XOR (X) y Chi en el elemento actual del estado original.</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        }</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <span class="comment">// Paso Iota (I)</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    state[0] ^= RC[ir]; <span class="comment">// Realizamos la operación Iota (I) en el primer elemento del estado original utilizando la constante RC correspondiente.</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>}</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="keyword">static</span> <span class="keywordtype">void</span> RND(uint64_t *state, <span class="keywordtype">int</span> ir) {</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    theta(state);  <span class="comment">// Llama a la función theta</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    rho(state);    <span class="comment">// Llama a la función rho</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    pi(state);     <span class="comment">// Llama a la función pi</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    xci_iota(state, ir);  <span class="comment">// Llama a la función xci_iota</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>}<span class="comment">//Estas transformaciones se aplican repetidamente en cada ronda del algoritmo para procesar los datos y calcular el hash final.</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="comment">//sponge</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="keyword">static</span> <span class="keywordtype">void</span> sponge_keccakf(uint8_t *in_string,uint8_t s_uint8[],uint64_t s_uint64[],uint64_t s[],<span class="keywordtype">int</span> bloques){</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    <span class="keywordtype">int</span> ir;</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0;j&lt;(bloques+1);j++){</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;(200);i++){</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>            <span class="keywordflow">if</span>(i&lt;136){ </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>                s_uint8[i] = in_string[i+(136*j)]; <span class="comment">// Copia los primeros 1088 bits del mensaje en s_uint8</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            }</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>                s_uint8[i] = 0b00000000;<span class="comment">// Rellena con ceros desde el bit 1088 (byte # 136) hasta el 1599 (byte # 199)</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>                     </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>            }</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>         <span class="comment">// Convierte los 200 bytes (1600 bits) en bloques de 64 bits</span></div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k=0;k&lt;25;k++){</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> l=0;l&lt;8;l++){</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>                    s_uint64[k] = (s_uint64[k]&lt;&lt;8)|(uint64_t)(s_uint8[l+(8*k)]); <span class="comment">//Cada entrada se desplaza 8 bits y se añaden 8 bits, al final deberías tener 64 bits</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>            }</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>            s[k]^=s_uint64[k];<span class="comment">// Realiza una operación XOR entre los bloques de 64 bits y el estado s</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        }</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <span class="comment">// Aplica las 24 rondas de transformaciones Keccak</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="keywordflow">for</span>(ir=0;ir&lt;24;ir++){    <span class="comment">// Itera a través de cada transformación</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>            RND(s,ir);  <span class="comment">// Llama a la función RND que aplica las transformaciones</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        }</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    }</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>}</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span><span class="comment">// Se encarga de imprimir el hash calculado en formato hexadecimal. </span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span><span class="keyword">static</span> <span class="keywordtype">void</span> keyhex(uint64_t s[], <span class="keywordtype">int</span> d,<span class="keywordtype">int</span> slen){</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    <span class="keywordtype">int</span> count=56;</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keywordtype">int</span> i=0;</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0;j&lt;d/8;j++)</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        {</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>            printf(<span class="stringliteral">&quot;%02x&quot;</span>,bswap_8(s[i]&gt;&gt;count));<span class="comment">// Aplica la función de swap a cada byte y lo imprime en hexadecimal</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>            count-=8;  <span class="comment">// Reduce el contador para cambiar al siguiente bloque de 8 bits</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>            <span class="keywordflow">if</span>(count&lt;0){</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>            count=56;</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>            i++; <span class="comment">// Restablece el contador para el siguiente bloque</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>                <span class="keywordflow">if</span>(i&gt;slen){     </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>                }</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            }                                       </div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        }</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>}</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

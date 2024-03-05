@@ -24,6 +24,14 @@
   "cmake.generator": "Ninja",
   "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
   "files.associations": {
-    "stdint.h": "c"
-  }
+    "stdio.h": "c",
+    "stdlib.h": "c",
+    "acceso.h": "c",
+    "binary_info.h": "c",
+    "gpio.h": "c",
+    "lcd_display.h": "c",
+    "adc.h": "c",
+    "irq.h": "c"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }
